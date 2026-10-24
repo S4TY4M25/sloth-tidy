@@ -147,8 +147,4 @@ Your invoices, notes and study material are read by a model on your own machine 
 
 ## 👨‍💻 Author
 
-S4TY4M25
-
-## 📄 License
-
-MIT
+**[S4TY4M25](https://github.com/S4TY4M25)**
