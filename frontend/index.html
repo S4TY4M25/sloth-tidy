@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sloth-tidy</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo spin">🦥</div>
+    <div><h1>sloth-tidy</h1><p class="tag">Do less. Your downloads folder tidies itself.</p></div>
+    <div class="pills">
+      <span class="pill ok"><span class="dot"></span>100% local &middot; no cloud</span>
+      <span class="pill" id="ollamaPill"><span class="dot"></span><span id="ollamaTxt">checking model&hellip;</span></span>
+    </div>
+  </header>
+
+  <section class="card" id="pick">
+    <h2>1. Pick a messy folder</h2>
+    <p class="sub">Files are only moved and renamed, never deleted, and every tidy can be undone.</p>
+    <div class="row">
+      <input type="text" id="folder" spellcheck="false" placeholder="/path/to/Downloads" aria-label="Folder path">
+      <button class="btn-primary" id="scanBtn">Scan folder</button>
+      <button class="btn-honey" id="demoBtn" title="Creates a fake messy folder so you can try it safely">&#10024; Try a demo mess</button>
+    </div>
+    <div class="opts">
+      <label><input type="checkbox" id="useAi" checked> Read documents with local AI</label>
+      <label>Model <select id="model"></select></label>
+      <label>Skip files newer than <input type="number" id="minAge" min="0" max="1440" value="5"> min</label>
+      <button class="btn-ghost" id="undoTop" style="margin-left:auto" hidden>&#8630; Undo last tidy</button>
+    </div>
+    <div class="hint hidden" id="offlineHint">
+      Ollama isn't running, so documents will be sorted with built-in offline keyword rules. For smarter names and categories:
+      install <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a>, run <code>ollama pull qwen2.5:1.5b</code>, then refresh this page.
+    </div>
+    <div class="err hidden" id="err"></div>
+  </section>
+
+  <section class="card hidden" id="scanning">
+    <h2><span class="spin">🦥</span> Reading your files&hellip; slowly, on purpose</h2>
+    <div class="progress"><i id="pbar"></i></div>
+    <div class="cur" id="pcur">starting&hellip;</div>
+  </section>
+
+  <section id="results" class="hidden">
+    <div class="stats" id="stats"></div>
+    <div class="card"><h2>Where things will go</h2><p class="sub">Folders get created next to your files.</p><div class="bars" id="bars"></div></div>
+    <div class="card">
+      <h2>2. Review the plan</h2>
+      <p class="sub" id="planSub"></p>
+      <div class="tablewrap"><table>
+        <thead><tr><th class="chk"><input type="checkbox" id="all" checked aria-label="Select all"></th><th>File</th><th></th><th>New home</th><th>How</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table></div>
+      <div class="actionbar"><div class="grow"><b id="selTxt"></b><br><small>Nothing moves until you press the button.</small></div>
+        <button class="btn-ghost" id="cancelBtn">Cancel</button>
+        <button class="btn-honey" id="applyBtn">&#129445; Tidy it</button></div>
+    </div>
+  </section>
+
+  <section class="card hidden" id="done">
+    <div class="banner"><div class="big">&#127881;</div>
+      <div style="flex:1"><h2 id="doneTitle"></h2><p class="sub" style="margin:2px 0 0" id="doneSub"></p></div>
+      <button class="btn-ghost" id="undoBtn">&#8630; Undo</button>
+      <button class="btn-primary" id="againBtn">Scan again</button></div>
+  </section>
+
+  <section class="card hidden" id="empty"><div class="empty"><span class="big">&#128564;</span><b>Already tidy.</b><br>Nothing to move here. That's the sloth way.</div></section>
+
+  <section class="card">
+    <h2>Why open-source AI?</h2>
+    <div class="why">
+      <div><b>&#128274; Private</b><span>Your invoices and notes are read by a model on your own machine. Nothing is uploaded.</span></div>
+      <div><b>&#128268; Works offline</b><span>This page, the server and the model all run locally. Unplug the Wi-Fi and it still works.</span></div>
+      <div><b>&#128260; Yours to change</b><span>Swap the model, edit the categories, or schedule it nightly. No API key, no bill.</span></div>
+    </div>
+  </section>
+  <p class="foot">Powered by an open-weight model via <code>Ollama</code> &middot; Python standard library only</p>
+</div>
+
+<script>window.TOKEN="__TOKEN__";</script>
+<script src="/script.js"></script>
+</body>
+</html>
