@@ -6,17 +6,17 @@ sloth-tidy is a lazy, fully local file organizer built with Python, plain HTML/C
 
 Built as a submission for the Open-Source AI Challenge: **Slow and Steady** (International Sloth Day edition).
 
-## ✨ Features
+## Features
 
-- 🗂️ **Automatic sorting**: images, videos, audio, archives, installers and code are filed by type; screenshots are detected by name.
-- 🤖 **Local AI for documents**: a small open-weight model reads the start of each document and picks a category and a short, descriptive file name.
+- **Automatic sorting**: images, videos, audio, archives, installers and code are filed by type; screenshots are detected by name.
+- **Local AI for documents**: a small open-weight model reads the start of each document and picks a category and a short, descriptive file name.
 - 👀 **Review before anything moves**: a plan table shows every move, tagged *AI*, *Rule* or *Keywords*. Untick anything you don't want.
-- ↩️ **One-click undo**: every run is journaled, so Undo restores every file, even after you restart the app.
-- 🧪 **Demo mode**: "Try a demo mess" creates a fake messy folder so you can see it work without touching your real files.
-- 🔌 **Works without the model too**: if Ollama isn't running, built-in offline keyword rules take over.
-- 🔒 **Local inference**: no API key, no cloud, no uploads.
+- **One-click undo**: every run is journaled, so Undo restores every file, even after you restart the app.
+- **Demo mode**: "Try a demo mess" creates a fake messy folder so you can see it work without touching your real files.
+- **Works without the model too**: if Ollama isn't running, built-in offline keyword rules take over.
+- **Local inference**: no API key, no cloud, no uploads.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Technology | Purpose |
 |---|---|
@@ -26,7 +26,7 @@ Built as a submission for the Open-Source AI Challenge: **Slow and Steady** (Int
 | Qwen 2.5 (`qwen2.5:1.5b`) | Document categorization and naming |
 | pypdf (optional) | Reading text from PDFs |
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 sloth-tidy/
@@ -40,7 +40,7 @@ sloth-tidy/
     └── script.js     # buttons, plan table, calls to the server
 ```
 
-## 🚀 Installation and Setup
+## Installation and Setup
 
 ### Prerequisites
 
@@ -85,7 +85,7 @@ python server.py
 
 Open http://127.0.0.1:8765 if your browser doesn't open automatically. (On Windows, use `py server.py` if `python` isn't recognized.)
 
-## 💡 Example Usage
+## Example Usage
 
 1. Click **✨ Try a demo mess**, or paste a folder path such as your Downloads folder.
 2. Review the plan, for example:
@@ -118,18 +118,18 @@ To tidy automatically every night, add a cron job (the truly lazy part):
 0 21 * * * /usr/bin/python3 /path/to/backend.py ~/Downloads --apply
 ```
 
-## 🛡️ Safety
+## Safety
 
 - Nothing moves until you click Tidy. Scanning only shows a plan.
 - Files are only moved and renamed, never deleted, and never overwritten (name clashes get `-2`, `-3`, and so on).
 - Files modified in the last 5 minutes are skipped, so half-finished downloads are left alone.
 - The server listens on `127.0.0.1` only and requires a per-session token, so other machines and other websites can't control it.
 
-## 🔐 Why Open-Weight, Local AI?
+## Why Open-Weight, Local AI?
 
 Your invoices, notes and study material are read by a model on your own machine instead of being sent to a cloud API. Once Ollama and the model are installed, everything runs without internet: the page, the server and the model. There is no API key and no per-file cost, and you can swap the model from the dropdown or edit the category list in `backend.py` to make it your own.
 
-## ⚠️ Limitations
+## Limitations
 
 - Only files directly inside the chosen folder are organized; existing subfolders are left alone.
 - A 1.5B model is fast but sometimes picks vague names. Try a larger model for better results.
@@ -137,7 +137,7 @@ Your invoices, notes and study material are read by a model on your own machine 
 - Image content is not analyzed; images are sorted by file type and name only.
 - Running the AI part requires a local Ollama installation and a downloaded model. Without it, the app uses simpler keyword rules.
 
-## 🔮 Future Improvements
+## Future Improvements
 
 - Vision model support for sorting photos by content
 - Custom categories editable from the web interface
@@ -145,6 +145,6 @@ Your invoices, notes and study material are read by a model on your own machine 
 - Built-in scheduling
 - Packaging as a one-click desktop app
 
-## 👨‍💻 Author
+## Author
 
 **[S4TY4M25](https://github.com/S4TY4M25)**
